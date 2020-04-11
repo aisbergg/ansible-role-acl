@@ -1,0 +1,6 @@
+---
+# list of ACLs to set
+acl_acls: []
+
+# set the defaults also as regular ACL entries
+acl_apply_defaults: true
