@@ -1,43 +1,8 @@
 ---
-- name: Install ACL package
-  tags: acl
-  package:
-    name: acl
-    state: present
+- name: include install tasks
+  ansible.builtin.import_tasks: installation.yml
+  tags: [acl, acl_install, install]
 
-- name: Manage ACLs
-  tags: acl
-  acl:
-    path: "{{ item.path }}"
-    recursive: "{{ item.recursive | default(omit) }}"
-    default: "{{ item.default | default(omit) }}"
-    recalculate_mask: "{{ item.recalculate_mask | default(omit) }}"
-    entity: "{{ item.entity | default(omit) }}"
-    state: "{{ item.state | default('present') }}"
-    follow: "{{ item.follow | default(omit) }}"
-    etype: "{{ item.etype | default(omit) }}"
-    entry: "{{ item.entry | default(omit) }}"
-    permissions: "{{ item.permissions | default(omit) }}"
-  loop: "{{ acl_acls }}"
-  loop_control:
-    label: "{{ item.path }}"
-
-- name: Apply default ACLs directly
-  tags: acl
-  acl:
-    path: "{{ item.path }}"
-    recursive: "{{ item.recursive | default(omit) }}"
-    default: false
-    recalculate_mask: "{{ item.recalculate_mask | default(omit) }}"
-    entity: "{{ item.entity | default(omit) }}"
-    state: "{{ item.state | default('present') }}"
-    follow: "{{ item.follow | default(omit) }}"
-    etype: "{{ item.etype | default(omit) }}"
-    entry: "{{ item.entry | default(omit) }}"
-    permissions: "{{ item.permissions | default(omit) }}"
-  when:
-    - acl_apply_defaults
-    - item.default | default(false)
-  loop: "{{ acl_acls }}"
-  loop_control:
-    label: "{{ item.path }}"
+- name: include acl tasks
+  ansible.builtin.import_tasks: acl.yml
+  tags: [acl]

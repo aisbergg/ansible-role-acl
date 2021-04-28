@@ -2,12 +2,14 @@
 dependencies: []
 
 galaxy_info:
-  author: Aisbergg
-  description: Manage file ACL on Linux systems.
+  author: André Lehmann
+  namespace: aisberg
+  role_name: acl
+  description: Manage file ACLs on Linux systems.
   company: none
-  issue_tracker_url: https://github.com/Aisbergg/ansible-role-acl/issues
+  issue_tracker_url: https://github.com/aisbergg/ansible-role-acl/issues
   license: MIT
-  min_ansible_version: 2.6
+  min_ansible_version: 2.10
 
   platforms:
     - name: EL
