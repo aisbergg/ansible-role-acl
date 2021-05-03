@@ -1,0 +1,28 @@
+---
+- name: ensure directory '{{ acl.path }}' exists
+  ansible.builtin.file:
+    path: "{{ acl.path }}"
+    state: directory
+    owner: "{{ acl.owner | default(omit) }}"
+    group: "{{ acl.group | default(omit) }}"
+    mode: "{{ acl.mode | default(omit) }}"
+    recurse: true
+  when: acl.create | default('no') == 'dir'
+
+- when: acl.create | default('no') == 'file'
+  block:
+    - name: ensure directory '{{ acl.path | dirname }}' exists
+      ansible.builtin.file:
+        path: "{{ acl.path | dirname }}"
+        state: directory
+        owner: "{{ acl.owner | default(omit) }}"
+        group: "{{ acl.group | default(omit) }}"
+        recurse: true
+
+    - name: create file '{{ acl.path }}' exists
+      ansible.builtin.file:
+        path: "{{ acl.path }}"
+        state: touch
+        owner: "{{ acl.owner | default(omit) }}"
+        group: "{{ acl.group | default(omit) }}"
+        mode: "{{ acl.mode | default(omit) }}"

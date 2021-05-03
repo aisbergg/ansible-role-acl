@@ -1,0 +1,29 @@
+---
+- name: manage ACL of '{{ acl.entity | mandatory }}' on '{{ acl.path }}'
+  ansible.posix.acl:
+    path: "{{ acl.path }}"
+    recursive: "{{ acl.recursive | default(omit) }}"
+    default: "{{ acl.default | default(omit) }}"
+    recalculate_mask: "{{ acl.recalculate_mask | default(omit) }}"
+    entity: "{{ acl.entity | default(omit) }}"
+    state: "{{ acl.state | default('present') }}"
+    follow: "{{ acl.follow | default(omit) }}"
+    etype: "{{ acl.etype | default(omit) }}"
+    permissions: "{{ acl.permissions | default(omit) }}"
+    use_nfsv4_acls: "{{ acl.use_nfsv4_acls | default(omit) }}"
+
+- name: apply default ACLs directly of '{{ acl.entity | mandatory }}' on '{{ acl.path }}'
+  ansible.posix.acl:
+    path: "{{ acl.path }}"
+    recursive: "{{ acl.recursive | default(omit) }}"
+    default: false
+    recalculate_mask: "{{ acl.recalculate_mask | default(omit) }}"
+    entity: "{{ acl.entity | default(omit) }}"
+    state: "{{ acl.state | default('present') }}"
+    follow: "{{ acl.follow | default(omit) }}"
+    etype: "{{ acl.etype | default(omit) }}"
+    permissions: "{{ acl.permissions | default(omit) }}"
+    use_nfsv4_acls: "{{ acl.use_nfsv4_acls | default(omit) }}"
+  when:
+    - acl_apply_defaults
+    - acl.default | default(false)

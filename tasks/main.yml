@@ -1,8 +1,20 @@
 ---
 - name: include install tasks
-  ansible.builtin.import_tasks: installation.yml
   tags: [acl, acl_install, install]
+  ansible.builtin.import_tasks: install.yml
+
+- name: include create dir/file tasks
+  tags: [acl, acl_create]
+  ansible.builtin.include_tasks: create-dir-file.yml
+  loop: "{{ acl_acls }}"
+  loop_control:
+    label: "{{ acl.path | mandatory }}"
+    loop_var: acl
 
 - name: include acl tasks
-  ansible.builtin.import_tasks: acl.yml
-  tags: [acl]
+  tags: [acl, acl_manage]
+  ansible.builtin.include_tasks: manage-acl.yml
+  loop: "{{ acl_acls }}"
+  loop_control:
+    label: "{{ acl.path | mandatory }}"
+    loop_var: acl
