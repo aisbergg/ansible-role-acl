@@ -34,3 +34,4 @@ options:
   notes:
     keywords:
       - BREAKING CHANGE
+      - SECURITY

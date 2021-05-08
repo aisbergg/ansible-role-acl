@@ -1,68 +1,40 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-
-- [Unreleased](#unreleased)
-{{- if .Versions }}
-{{ range .Versions -}}
-- [{{ .Tag.Name }} - {{ datetime "2006-01-02" .Tag.Date }}](#{{ regexReplaceAll "\\." .Tag.Name "" }}---{{ datetime "2006-01-02" .Tag.Date }})
-{{ end -}}
-{{- end }}
----
-
-{{ if .Versions -}}
-<a name="unreleased"></a>
-## [Unreleased]
-
-{{ if .Unreleased.CommitGroups -}}
-{{ range .Unreleased.CommitGroups -}}
-### {{ .Title }}
-{{ range .Commits -}}
-- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
-{{ end }}
-{{ end -}}
-{{ end -}}
-{{ end -}}
-
 {{ range .Versions }}
-<a name="{{ .Tag.Name }}"></a>
-## {{ if .Tag.Previous }}[{{ .Tag.Name }}]{{ else }}{{ .Tag.Name }}{{ end }} - {{ datetime "2006-01-02" .Tag.Date }}
+{{ $strippedTagName := regexReplaceAll "^v" .Tag.Name "" -}}
+- [{{ $strippedTagName }} - {{ datetime "2006-01-02" .Tag.Date }}](#{{ regexReplaceAll "\\." $strippedTagName "" }}-{{ datetime "2006-01-02" .Tag.Date }})
+{{- end }}
+
+---
+{{ range .Versions }}
+{{ $strippedTagName := regexReplaceAll "^v" .Tag.Name "" -}}
+<a name="{{ $strippedTagName }}"></a>
+## {{ if .Tag.Previous }}[{{ $strippedTagName }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ $strippedTagName }}{{ end }} ({{ datetime "2006-01-02" .Tag.Date }})
+
 {{ range .CommitGroups -}}
 ### {{ .Title }}
+
 {{ range .Commits -}}
-- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
+* {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
 {{ end }}
 {{ end -}}
 
 {{- if .RevertCommits -}}
 ### Reverts
-{{ range .RevertCommits -}}
-- {{ .Revert.Header }}
-{{ end }}
-{{ end -}}
 
-{{- if .MergeCommits -}}
-### Pull Requests
-{{ range .MergeCommits -}}
-- {{ .Header }}
+{{ range .RevertCommits -}}
+* {{ .Revert.Header }}
 {{ end }}
 {{ end -}}
 
 {{- if .NoteGroups -}}
 {{ range .NoteGroups -}}
-### {{ .Title }}
+### {{ if eq .Title "BREAKING CHANGE" }}⚠ BREAKING CHANGES{{ else if eq .Title "SECURITY" }}‼️ SECURITY{{ else}}{{ .Title }}{{ end }}
+
 {{ range .Notes }}
 {{ .Body }}
 {{ end }}
-{{ end -}}
-{{ end -}}
-{{ end -}}
-
-{{- if .Versions }}
-[Unreleased]: {{ .Info.RepositoryURL }}/compare/{{ $latest := index .Versions 0 }}{{ $latest.Tag.Name }}...HEAD
-{{ range .Versions -}}
-{{ if .Tag.Previous -}}
-[{{ .Tag.Name }}]: {{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
