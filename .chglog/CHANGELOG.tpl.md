@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 {{ range .Versions }}
 {{ $strippedTagName := regexReplaceAll "^v" .Tag.Name "" -}}
-- [{{ $strippedTagName }} - {{ datetime "2006-01-02" .Tag.Date }}](#{{ regexReplaceAll "\\." $strippedTagName "" }}-{{ datetime "2006-01-02" .Tag.Date }})
+- [{{ $strippedTagName }} ({{ datetime "2006-01-02" .Tag.Date }})](#{{ regexReplaceAll "\\." $strippedTagName "" }}-{{ datetime "2006-01-02" .Tag.Date }})
 {{- end }}
 
 ---
