@@ -5,7 +5,7 @@
 
 - name: include create dir/file tasks
   tags: [acl, acl_create]
-  ansible.builtin.include_tasks: create-dir-file.yml
+  ansible.builtin.include_tasks: create_dir_file.yml
   loop: "{{ acl_acls }}"
   loop_control:
     label: "{{ acl.path | mandatory }}"
@@ -13,7 +13,7 @@
 
 - name: include acl tasks
   tags: [acl, acl_manage]
-  ansible.builtin.include_tasks: manage-acl.yml
+  ansible.builtin.include_tasks: manage_acl.yml
   loop: "{{ acl_acls }}"
   loop_control:
     label: "{{ acl.path | mandatory }}"
