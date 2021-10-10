@@ -10,13 +10,13 @@ All notable changes to this project will be documented in this file.
 {{ range .Versions }}
 {{ $strippedTagName := regexReplaceAll "^v" .Tag.Name "" -}}
 <a name="{{ $strippedTagName }}"></a>
-## {{ if .Tag.Previous }}[{{ $strippedTagName }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ $strippedTagName }}{{ end }} ({{ datetime "2006-01-02" .Tag.Date }})
+## [{{ $strippedTagName }}]({{ if .Tag.Previous }}{{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}{{ end }}) ({{ datetime "2006-01-02" .Tag.Date }})
 
 {{ range .CommitGroups -}}
 ### {{ .Title }}
 
 {{ range .Commits -}}
-* {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
+- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
 {{ end }}
 {{ end -}}
 
