@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file.
 ### Reverts
 
 {{ range .RevertCommits -}}
-* {{ .Revert.Header }}
+- {{ .Revert.Header }}
 {{ end }}
 {{ end -}}
 
