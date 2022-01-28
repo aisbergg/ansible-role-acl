@@ -2,10 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+- [2.2.0 (2022-01-28)](#2.2.0-2022-01-28)
 - [2.1.3 (2021-10-10)](#213-2021-10-10)
 - [2.1.2 (2021-05-08)](#212-2021-05-08)
 - [2.1.1 (2021-05-08)](#211-2021-05-08)
 - [2.1.0 (2021-05-06)](#210-2021-05-06)
+- [1.0.2 (2021-05-03)](#102-2021-05-03)
 - [2.0.1 (2021-04-28)](#201-2021-04-28)
 - [2.0.0 (2021-04-28)](#200-2021-04-28)
 - [1.0.1 (2020-05-15)](#101-2020-05-15)
@@ -13,8 +15,29 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+<a name="2.2.0"></a>
+## [2.2.0](https://github.com/aisbergg/ansible-role-acl/compare/v2.1.3...2.2.0) (2022-01-28)
+
+### CI Configuration
+
+- fix automatic release and publish process
+
+### Chores
+
+- include changelog in bump commits
+- update changelog template
+- **.ansible-lint:** update linter config
+- **.pre-commit-config.yaml:** bump pre-commit hook versions
+- **CHANGELOG.tpl.md:** update changelog template
+- **requirements.yml:** add role requirements
+
+
 <a name="2.1.3"></a>
-## [2.1.3](https://github.com/aisbergg/ansible-role-acl/compare/v2.1.2...2.1.3) (2021-10-10)
+## [2.1.3](https://github.com/aisbergg/ansible-role-acl/compare/v2.1.2...v2.1.3) (2021-10-10)
+
+### Chores
+
+- **CHANGELOG.md:** update changelog
 
 ### Code Refactoring
 
@@ -39,22 +62,37 @@ All notable changes to this project will be documented in this file.
 
 
 <a name="2.1.0"></a>
-## [2.1.0](https://github.com/aisbergg/ansible-role-acl/compare/v2.0.1...v2.1.0) (2021-05-06)
+## [2.1.0](https://github.com/aisbergg/ansible-role-acl/compare/v1.0.2...v2.1.0) (2021-05-06)
 
 ### Build System
 
 - change bump message format
+- update development configs
 - **lint:** change linter configuration
 - **pre-commit:** use pre-commit hooks
 
+### Code Refactoring
+
+- drop support for Ansible version < 2.10
+
 ### Documentation
 
+- **CHANGELOG.md:** update changelog
 - **README.md:** document all variables and reword the role introduction
 - **changelog:** update changelog
 
 ### Features
 
 - add option to create missing dirs/files and refactor code
+
+### ⚠ BREAKING CHANGES
+
+
+drop support for Ansible version < 2.10
+
+
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/aisbergg/ansible-role-acl/compare/v2.0.1...v1.0.2) (2021-05-03)
 
 
 <a name="2.0.1"></a>
@@ -94,3 +132,4 @@ drop support for Ansible version < 2.10
 <a name="1.0.0"></a>
 ## [1.0.0]() (2020-04-12)
 
+Initial Release
