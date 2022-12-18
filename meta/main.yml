@@ -9,7 +9,7 @@ galaxy_info:
   company: none
   issue_tracker_url: https://github.com/aisbergg/ansible-role-acl/issues
   license: MIT
-  min_ansible_version: 2.10
+  min_ansible_version: "2.10"
 
   platforms:
     - name: Alpine
@@ -23,8 +23,8 @@ galaxy_info:
         - all
     - name: EL
       versions:
-        - 7
-        - 8
+        - "7"
+        - "8"
     - name: Fedora
       versions:
         - all
