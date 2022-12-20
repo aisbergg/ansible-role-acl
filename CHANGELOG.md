@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-- [2.2.0 (2022-01-28)](#2.2.0-2022-01-28)
+- [2.2.1 (2022-12-18)](#221-2022-12-18)
+- [2.2.0 (2022-01-28)](#220-2022-01-28)
 - [2.1.3 (2021-10-10)](#213-2021-10-10)
 - [2.1.2 (2021-05-08)](#212-2021-05-08)
 - [2.1.1 (2021-05-08)](#211-2021-05-08)
@@ -15,8 +16,22 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.0...v2.2.1) (2022-12-18)
+
+### CI Configuration
+
+- add branch explicitly to make Ansible import action happy
+- bump Ansible Galaxy action version
+
+### Chores
+
+- update linting config and add tox.ini
+- don't use bump2version to include the CHANGELOG in the bump commit, it doesn't do a good job
+
+
 <a name="2.2.0"></a>
-## [2.2.0](https://github.com/aisbergg/ansible-role-acl/compare/v2.1.3...2.2.0) (2022-01-28)
+## [2.2.0](https://github.com/aisbergg/ansible-role-acl/compare/v2.1.3...v2.2.0) (2022-01-28)
 
 ### CI Configuration
 
