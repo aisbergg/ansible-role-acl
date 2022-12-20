@@ -1,0 +1,43 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+    requirements-file: requirements.yml
+driver:
+  name: vagrant
+platforms:
+  - name: molecule-acl-debian11-$TOX_ENVNAME
+    box: debian/bullseye64
+    memory: 384
+    cpus: 1
+
+  - name: molecule-acl-rockylinux9-$TOX_ENVNAME
+    box: bento/rockylinux-9.1
+    memory: 384
+    cpus: 1
+
+  - name: molecule-acl-archlinux-$TOX_ENVNAME
+    box: archlinux/archlinux
+    memory: 384
+    cpus: 1
+provisioner:
+  name: ansible
+  lint: ansible-lint --force-color
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
+verifier:
+  name: ansible
+scenario:
+  test_sequence:
+    - dependency
+    - lint
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    - verify
+    - destroy

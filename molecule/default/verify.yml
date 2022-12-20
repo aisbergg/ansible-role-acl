@@ -1,0 +1,32 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: get dir stat
+      ansible.builtin.stat:
+        path: /acl/dir
+      register: dir_info
+
+    - name: assert that dir exists
+      ansible.builtin.assert:
+        that:
+          - dir_info.stat.exists
+          - dir_info.stat.isdir
+
+    - name: get file ACL
+      ansible.posix.acl:
+        path: /acl/file.txt
+      register: file_acl
+
+    - name: get dir ACL
+      ansible.posix.acl:
+        path: /acl/dir
+      register: dir_acl
+
+    - name: assert that ACLs are correct set
+      ansible.builtin.assert:
+        that:
+          - "'user:vagrant:rw-' in file_acl.acl"
+          - "'group:vagrant:rwx' in dir_acl.acl"
+          - "'default:group:vagrant:rwx' in dir_acl.acl"

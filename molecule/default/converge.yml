@@ -1,0 +1,41 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    acl_apply_defaults: true
+    acl_acls:
+      - path: /acl/file.txt
+        entity: vagrant
+        etype: user
+        permissions: rw
+
+      - path: /acl/dir
+        create: dir
+        owner: root
+        group: root
+        entity: vagrant
+        etype: group
+        permissions: rwX
+        default: true
+
+  tasks:
+    - name: create a dir
+      ansible.builtin.file:
+        path: /acl
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: create a file
+      ansible.builtin.file:
+        path: /acl/file.txt
+        state: touch
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: include role
+      ansible.builtin.include_role:
+        name: aisbergg.acl
