@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-- [2.2.1 (2022-12-18)](#221-2022-12-18)
+- [2.2.2 (2022-12-20)](#222-2022-12-20)
+- [2.2.1 (2022-12-20)](#221-2022-12-20)
 - [2.2.0 (2022-01-28)](#220-2022-01-28)
 - [2.1.3 (2021-10-10)](#213-2021-10-10)
 - [2.1.2 (2021-05-08)](#212-2021-05-08)
@@ -16,8 +17,12 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.1...v2.2.2) (2022-12-20)
+
+
 <a name="2.2.1"></a>
-## [2.2.1](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.0...v2.2.1) (2022-12-18)
+## [2.2.1](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.0...v2.2.1) (2022-12-20)
 
 ### CI Configuration
 
