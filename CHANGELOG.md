@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
+- [2.2.3 (2023-01-03)](#223-2023-01-03)
 - [2.2.2 (2022-12-20)](#222-2022-12-20)
 - [2.2.1 (2022-12-20)](#221-2022-12-20)
 - [2.2.0 (2022-01-28)](#220-2022-01-28)
@@ -16,6 +17,14 @@ All notable changes to this project will be documented in this file.
 - [1.0.0 (2020-04-12)](#100-2020-04-12)
 
 ---
+
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.2...v2.2.3) (2023-01-03)
+
+### Bug Fixes
+
+- fix syntax of requirements file
+
 
 <a name="2.2.2"></a>
 ## [2.2.2](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.1...v2.2.2) (2022-12-20)
