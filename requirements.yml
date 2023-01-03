@@ -1,4 +1,4 @@
 ---
 roles: []
 collections:
-  - ansible.posix
+  - name: ansible.posix
