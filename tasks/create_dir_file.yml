@@ -6,7 +6,6 @@
     owner: "{{ acl.owner | default(omit) }}"
     group: "{{ acl.group | default(omit) }}"
     mode: "{{ acl.mode | default(omit) }}"
-    recurse: true
   when: acl.create | default('no') == 'dir'
 
 - when: acl.create | default('no') == 'file'
@@ -17,7 +16,6 @@
         state: directory
         owner: "{{ acl.owner | default(omit) }}"
         group: "{{ acl.group | default(omit) }}"
-        recurse: true
 
     - name: create file '{{ acl.path }}' exists
       ansible.builtin.file:
