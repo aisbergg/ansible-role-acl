@@ -2,6 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
+- [2.3.0 (2023-02-05)](#230-2023-02-05)
 - [2.2.3 (2023-01-03)](#223-2023-01-03)
 - [2.2.2 (2022-12-20)](#222-2022-12-20)
 - [2.2.1 (2022-12-20)](#221-2022-12-20)
@@ -17,6 +18,14 @@ All notable changes to this project will be documented in this file.
 - [1.0.0 (2020-04-12)](#100-2020-04-12)
 
 ---
+
+<a name="2.3.0"></a>
+## [2.3.0](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.3...v2.3.0) (2023-02-05)
+
+### Bug Fixes
+
+- don't recursively set owner and mode on directories
+
 
 <a name="2.2.3"></a>
 ## [2.2.3](https://github.com/aisbergg/ansible-role-acl/compare/v2.2.2...v2.2.3) (2023-01-03)
